@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { stat } from 'fs';
 import { RootState, AppThunk } from '../../app/store';
-import { fetchCount, fetchlocaljobsapi } from './counterAPI';
+import { fetchCount, fetchlocaljobsapi } from './loginAPIs';
 import { store } from '../../app/store';
 
 export interface CounterState {
@@ -35,7 +35,6 @@ export const incrementAsync = createAsyncThunk(
 export const calllocaljobsapi = createAsyncThunk(
   'counter/fetchlocaljobsapi',
   async (payload: Custom) => {
-  
          return fetchlocaljobsapi(payload).then(val=>{
           return val.json().then(post => {
             return post.name;

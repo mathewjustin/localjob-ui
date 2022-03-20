@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Login } from './components/Login/Login';
 
 function App() {
+  //const [token,setToken]=useState('')
+  //if token exist
+  //if not then redirect to login page. Thats it!
+//  if(!token)
+//  {
+//    return <Login/>
+//  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
+
+import { Button } from 'react-bootstrap';
+
 import {
   decrement,
   increment,
@@ -14,6 +17,8 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 import { setSourceMapRange } from 'typescript';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 
 export function Counter() {
   const count = useAppSelector(selectCount);
@@ -21,6 +26,7 @@ export function Counter() {
   // const firstValueL=useAppSelector(firstValue);
   // const secondValueL=useAppSelector(secondValue);
 
+  const restult1=useSelector((state: RootState) => state.counter.value);
 
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -44,29 +50,29 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
-        <input value={valueToAdd.firstValue} name="firstValue" onChange={handleChange}/>
+        <input value={valueToAdd.firstValue}  name="firstValue" onChange={handleChange}/>
         <input value={valueToAdd.secondValue} name="secondValue" onChange={handleChange}/>
         <input value={result} readOnly></input>
-        <button
+        <Button variant="primary"
           className={styles.button}
           aria-label="Add Value"
            onClick={() => dispatch(addValue(valueToAdd))}
-        >Add 2 numberss</button>
+        >Add 2 numberss</Button>
 
-<button
+   <Button variant="success"
           className={styles.button}
           aria-label="Add Value API"
            onClick={() => dispatch(calllocaljobsapi(valueToAdd))}
-        >Add Value API</button>
+        >Add Value API</Button>
 
  
-        <button
+     {/*    <button
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
-        >
+        >   
           -
-        </button>
+        </button> 
         <span className={styles.value}>{count}</span>
         <button
           className={styles.button}
@@ -74,10 +80,10 @@ export function Counter() {
           onClick={() => dispatch(increment())}
         >
           +
-        </button>
+        </button>*/}
       </div>
       <div className={styles.row}>
-        <input
+{/*         <input
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
@@ -105,7 +111,7 @@ export function Counter() {
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
-        </button>
+        </button> */}
       </div>
     </div>
   );
